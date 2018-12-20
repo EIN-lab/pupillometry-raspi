@@ -61,7 +61,7 @@ First, place the Raspberry on the brass spacers of the touch screen board. Make 
 
 ![](assets/images/TouchPi_mounted2_annotated.png)
 
-Install the SD card now with the pins facing the Raspberry's PCB. Also, install the short display cable that came with the touch screen. Ignore the 4 colored cables that shipped with the touch screen. These are only needed if you use a really old Raspberry Pi and/or if you plan to power the Raspberry from the screen directly. This option is not recommended, as screen, camera and light need more power than a single average power supply can provide. This can lead to unexpected behavior.
+Install the SD card now with the pins facing the Raspberry's PCB. Also, install the short display cable that came with the touch screen. Make sure the metal contacts on the ribbon cable are facing towards the contacts in the socket, and away from the black bracket. Ignore the 4 colored cables that shipped with the touch screen. These are only needed if you use a really old Raspberry Pi and/or if you plan to power the Raspberry from the screen directly. This option is not recommended, as screen, camera and light need more power than a single average power supply can provide. This can lead to unexpected behavior.
 
 Please, be aware that this part of the assembly will likely not be accessible anymore once it's inside the housing.
 
@@ -81,7 +81,7 @@ Assemble the Bright Pi light source following the official [quick start guide](h
 
 ![parts](assets/images/brightpi_parts.png)
 
-Swap the original short CSI (Camera Serial Interface) cable and the four cables connecting the BrightPi with longer ones. We recommend using ~50cm. The effective length needed depends on the setup and the cables can easily be changed later during the process. The white plastic ring visible on the picture is used to adjust focus of the camera. Adjust the camera focus before mounting it to the BrightPi or you won't be able to access the lens anymore with the focus ring. It can also be adjusted using fine plastic tweezers, but make sure not to scratch it.
+Swap the original short CSI (Camera Serial Interface) cable and the four cables connecting the BrightPi with longer ones. We recommend using ~50cm. The effective length needed depends on the setup and the cables can easily be changed later during the process. The white plastic ring visible on the picture is used to adjust focus of the camera. Adjust the camera focus before mounting it to the BrightPi or you won't be able to access the lens anymore with the focus ring. It can also be adjusted using fine plastic tweezers, but make sure not to scratch the lens.
 
 ![assembled](assets/images/brightpi_assembled.png)
 
@@ -91,7 +91,7 @@ The Bright Pi light source can either be connected to the camera directly or use
 
 The four pins on the BrightPi board are - starting from the one with a black square - **GND**, 5V, SCL, SDA. Connect those to the Raspberry Pi respectively. Again, check the [quick start guide](https://learn.pi-supply.com/make/bright-pi-quickstart-faq/) for instructions.
 
-Then connect the CSI cable to the camera port on the Raspberry Pi. Lift the black bracket and push the cable in, metal pins of the cable and the connector facing each other.
+Then connect the CSI cable to the camera port on the Raspberry Pi. Lift the black bracket and push the cable in. Again, make sure the metal contacts on the ribbon cable are facing towards the contacts in the socket, and away from the black bracket.
 
 ![](assets/images/CameraPi_Connected.png)
 

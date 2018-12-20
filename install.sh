@@ -7,6 +7,9 @@ cd /home/pi/Code
 # Clone into pupillometry repository
 git clone https://github.com/ein-lab/camera-gui.git
 
+# Enable camera
+sudo raspi-config nonint do_camera 0
+
 # Enable I2C for BrightPi control
 sudo raspi-config nonint do_i2c 0
 
