@@ -150,17 +150,17 @@ Start the camera GUI with default parameters.
 
 ```bash
 # Run this line to start the GUI
-python /home/pi/Code/pupil-analysis/camera/CamGUI.py
+python /home/pi/Code/camera-gui/CamGUI.py
 ```
 
 The GUI also takes user-specified parameters as optional input arguments.
 
 ```bash
 # Display all options
-python /home/pi/Code/pupil-analysis/camera/CamGUI.py -h
+python /home/pi/Code/camera-gui/CamGUI.py -h
 
 # Start the GUI with custom frame rate
-python /home/pi/Code/pupil-analysis/camera/CamGUI.py --framerate 30
+python /home/pi/Code/camera-gui/CamGUI.py --framerate 30
 ```
 
 ## Optional Add-Ons

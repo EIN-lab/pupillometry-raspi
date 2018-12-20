@@ -5,7 +5,7 @@ mkdir -p /home/pi/Code
 cd /home/pi/Code
 
 # Clone into pupillometry repository
-git clone https://github.com/ein-lab/pupil-analysis.git
+git clone https://github.com/ein-lab/camera-gui.git
 
 # Enable I2C for BrightPi control
 sudo raspi-config nonint do_i2c 0

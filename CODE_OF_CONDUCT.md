@@ -1,4 +1,4 @@
-# pupil-analysis Code of Conduct
+# camera-gui Code of Conduct
 
 ## Our Pledge
 
