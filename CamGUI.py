@@ -92,7 +92,7 @@ class CamGUI:
         self.stop_rec.pack()
 
         # Skip lamp control, if necessary
-        if !(args.light_off):
+        if not args.light_off:
             self.light_label = Label(master, text="LED control")
             self.light_label.pack()
 
@@ -219,7 +219,7 @@ GPIO.setmode(GPIO.BOARD)
 GPIO.setup(args.trigger_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP) # internal pull up
 
 # Check whether BrightPi is used
-if !(args.light_off):
+if not args.light_off:
     brightPi = BrightPi()
     brightPi.reset()
 
