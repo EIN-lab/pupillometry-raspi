@@ -265,7 +265,7 @@ camera.sensor_mode = args.sensor_mode
 
 #calculate preview size
 height = int(args.prevsize * 0.75)
-width = args.prevsize
+width = int(args.prevsize)
 camera.preview_window = (100,20,width,height)
 
 # Create GUI
