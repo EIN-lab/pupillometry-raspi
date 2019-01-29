@@ -176,13 +176,24 @@ class CamGUI:
 
         if fname == "./":
             date = datetime.datetime.now().strftime("%d_%m_%Y_%H_%M_%S")
-            fname = "./"+ date+ ".h264"
+            fname = "./"+ date
 
+        if fname[-4:] != ".h264"
+            fname = fname+ ".h264"
+
+        # Update displayed file name
+        self.file_name_value.delete(0,END)
+        self.file_name_value.insert(0, fname)
+
+        # Get recording time
         time_rec = int(self.record_time_value.get())
-        camera.start_recording(fname)
 
+        # Start recording and tell user
+        camera.start_recording(fname)
+        sys.stdout.write("\rRecording started\n")
+
+        # Do timed recording, if necessary
         if (time_rec > 0):
-            sys.stdout.write("\rRecording started\n")
             for remaining in range(time_rec, 0, -1):
                 sys.stdout.write("\r")
                 sys.stdout.write("{:2d} seconds remaining.".format(remaining))
@@ -207,11 +218,11 @@ class CamGUI:
     def wait_for_trigger(self):
         """Wait for a trigger to arrive
 
-        When waiting for a trigger, the timeout value in GPIO.wait_for_trigger()
+        When waiting for a trigger, the timeout value in GPIO.wait_for_edge()
         defines maximum response latency. Length of range in for loop multiplied
         by timeout + debounce time gives time until trigger timeout."""
 
-        print('Waiting for trigger ')
+        sys.stdout.write('\bWaiting for trigger ')
         spinner = itertools.cycle(['-', '/', '|', '\\']) # set up spinning "wheel"
 
         numloops = int(args.timeout * 5) # Number of loops until timeout
@@ -243,8 +254,20 @@ class CamGUI:
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(args.trigger_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP) # internal pull up
 
-# Check whether BrightPi is used
-if not args.light_off:
+# # Check whether BrightPi is used
+# if not args.light_off:
+#     brightPi = BrightPi()
+#     brightPi.reset()
+#
+#     # Define LEDs
+#     LED_ALL = (1,2,3,4,5,6,7,8)
+#     LED_WHITE = LED_ALL[0:4]
+#     LED_IR = LED_ALL[4:8]
+#     ON = 1
+#     OFF = 0
+
+# Try creating BrightPi object
+try:
     brightPi = BrightPi()
     brightPi.reset()
 
@@ -254,6 +277,11 @@ if not args.light_off:
     LED_IR = LED_ALL[4:8]
     ON = 1
     OFF = 0
+except:
+    sys.stdout.write("\nNo BrightPi detected. Disabling LED control.\n")
+
+    # Disable LED option menu
+    LIGHT_Option.configure(state="disabled")
 
 # Create camera object with defined settings
 camera = PiCamera()
@@ -266,7 +294,7 @@ camera.sensor_mode = args.sensor_mode
 #calculate preview size
 height = int(args.prevsize * 0.75)
 width = int(args.prevsize)
-camera.preview_window = (100,20,width,height)
+camera.preview.window = (100,20,width,height)
 
 # Create GUI
 root = Tk()
