@@ -30,6 +30,7 @@ parser.add_argument("--sensor_mode",  type=int, default=1,
 args = parser.parse_args()
 
 effects = ['off', 'all', 'IR', 'white']
+zooms = ['1x', '2x', '4x', '10x']
 
 class CamGUI:
     """A simple GUI to control RasPi camera recordings
@@ -91,6 +92,16 @@ class CamGUI:
             command=camera.stop_recording)
         self.stop_rec.pack()
 
+        # Zoom control
+        self.zoom_label = Label(master, text="Set zoom")
+        self.zoom_label.pack()
+
+        ZOOM_Var = StringVar(root)
+        ZOOM_Var.set(effects[0])
+        ZOOM_Option = OptionMenu(master, ZOOM_Var, *zooms,
+            command=self.set_zoom)
+        ZOOM_Option.pack()
+
         # Skip lamp control, if necessary
         if not args.light_off:
             self.light_label = Label(master, text="LED control")
@@ -133,6 +144,20 @@ class CamGUI:
 
         if not (leds_on == LED_ALL):
             brightPi.set_led_on_off(leds_off, OFF)
+
+    def set_zoom(self, value):
+        """Zoom control"""
+
+        if (value == '2x'):
+	        zoom = (0.25, 0.25, 0.5, 0.5)
+        elif (value == '4x'):
+	        zoom = (0.375, 0.375, 0.25, 0.25)
+        elif (value == '10x'):
+	        zoom = (0.45, 0.45, 0.1, 0.1)
+        else:
+            zoom = (0.0, 0.0, 1.0, 1.0)
+
+        camera.zoom = zoom
 
     def start_recording(self):
         """Start recording or wait for trigger"""
