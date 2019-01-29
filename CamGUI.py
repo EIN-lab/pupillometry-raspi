@@ -98,9 +98,9 @@ class CamGUI:
 
         ZOOM_Var = StringVar(root)
         ZOOM_Var.set(zooms[0])
-        ZOOM_Option = OptionMenu(master, ZOOM_Var, *zooms,
+        self.zoom_option = OptionMenu(master, ZOOM_Var, *zooms,
             command=self.set_zoom)
-        ZOOM_Option.pack()
+        self.zoom_option.pack()
 
         # Skip lamp control, if necessary
         if not args.light_off:
@@ -109,12 +109,12 @@ class CamGUI:
 
             LIGHT_Var = StringVar(root)
             LIGHT_Var.set(effects[0])
-            LIGHT_Option = OptionMenu(master, LIGHT_Var, *effects,
+            self.light_Option = OptionMenu(master, LIGHT_Var, *effects,
                 command=self.set_light)
-            LIGHT_Option.pack()
+            self.light_Option.pack()
 
             if disable_light:
-                LIGHT_Option.menu.configure(state="disabled")
+                self.light_Option.configure(state="disabled")
 
     def on_enter(self, event):
         """Tooltip for record time label"""
