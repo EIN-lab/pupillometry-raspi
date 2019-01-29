@@ -23,6 +23,8 @@ python /home/pi/Code/camera-gui/CamGUI.py
 6. Enables external triggering
 7. Starts recording
 8. Stops recording
+9. Sets the (digital) zoom value
+10. Controls BrightPi light source
 
 ### Simple recording
 For a simple recording, start CamGUI.py and press "Start preview". Now adjust camera position and focus. If you want to see video on the screen during your recording, simply leave the preview on and press "Start recording". The camera will now record to the directory shown in terminal until "Stop recording" is pressed. The default filename is constructed from the date and time of the recording.
@@ -37,7 +39,7 @@ CamGUI.py can be started with optional parameters in the following format, witho
 # Start CamGUI.py with optional parameters
 python /home/pi/Code/camera-gui/CamGUI.py --[PARAMETER] [VALUE]
 
-# Example without BrightPi light source control. 
+# Example without BrightPi light source control.
 # Note that '--light_off' doesn't require a value
 python /home/pi/Code/camera-gui/CamGUI.py --light_off
 
