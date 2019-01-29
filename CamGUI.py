@@ -113,6 +113,9 @@ class CamGUI:
                 command=self.set_light)
             LIGHT_Option.pack()
 
+            if disable_light:
+                LIGHT_Option.menu.configure(state="disabled")
+
     def on_enter(self, event):
         """Tooltip for record time label"""
 
@@ -178,7 +181,7 @@ class CamGUI:
             date = datetime.datetime.now().strftime("%d_%m_%Y_%H_%M_%S")
             fname = "./"+ date
 
-        if fname[-4:] != ".h264"
+        if fname[-4:] != ".h264":
             fname = fname+ ".h264"
 
         # Update displayed file name
@@ -281,7 +284,7 @@ except:
     sys.stdout.write("\nNo BrightPi detected. Disabling LED control.\n")
 
     # Disable LED option menu
-    LIGHT_Option.configure(state="disabled")
+    disable_light = True
 
 # Create camera object with defined settings
 camera = PiCamera()
@@ -294,7 +297,7 @@ camera.sensor_mode = args.sensor_mode
 #calculate preview size
 height = int(args.prevsize * 0.75)
 width = int(args.prevsize)
-camera.preview.window = (100,20,width,height)
+camera.preview_window = (100,20,width,height)
 
 # Create GUI
 root = Tk()
