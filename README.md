@@ -119,7 +119,7 @@ Hit `CTRL+X` and `y` to save. Finally, reboot the system.
 sudo reboot
 ```
 
-The above is almost word-by-work copied from the [official documentation](https://www.raspberrypi.org/documentation/hardware/display/troubleshooting.md) where you can also find a lot more troubleshooting information.
+The above is almost word-by-word copied from the [official documentation](https://www.raspberrypi.org/documentation/hardware/display/troubleshooting.md) where you can also find a lot more troubleshooting information.
 
 ###### Camera
 
@@ -162,6 +162,8 @@ python /home/pi/Code/camera-gui/CamGUI.py -h
 # Start the GUI with custom frame rate
 python /home/pi/Code/camera-gui/CamGUI.py --framerate 30
 ```
+
+More information on all optional parameters can be found in the [user's guide](USAGE.md)
 
 ## Optional Add-Ons
 

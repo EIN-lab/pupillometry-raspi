@@ -11,10 +11,12 @@ import RPi.GPIO as GPIO
 import argparse
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--light", action='store_false', default=True,
-    dest='light', help="Toggle BrightPi.")
 parser.add_argument('--fullscreen', action='store_true', default=False,
     dest='fullscreen', help="Toggle fullscreen preview.")
+parser.add_argument("--trigger_pin",  type=int, default=40,
+    help="Raspberry's trigger input pin as specified with 'GPIO.board'.",)
+parser.add_argument("--light_off", action='store_true', default=False,
+    dest='light', help="Disable BrightPi.")
 parser.add_argument("--prevsize",  type=float, default=320,
     help="Width of the preview window.",)
 parser.add_argument("-r", "--framerate",  type=int, default=30,
@@ -23,9 +25,10 @@ parser.add_argument("--rotation",  type=int, default=180,
     help="Rotation of camera output picture, in degree.",)
 parser.add_argument("--timeout",  type=int, default=20,
     help="How long the program will wait for an external trigger.",)
+parser.add_argument("--sensor_mode",  type=int, default=1,
+    help="Which sensor mode (1-7) should be used.",)
 args = parser.parse_args()
 
-channelPush = 40	# GPIO pin for push button/trigger LOW=active
 effects = ['off', 'all', 'IR', 'white']
 
 class CamGUI:
@@ -89,8 +92,8 @@ class CamGUI:
         self.stop_rec.pack()
 
         # Skip lamp control, if necessary
-        if args.light:
-            self.light_label = Label(master, text="LED light")
+        if !(args.light_off):
+            self.light_label = Label(master, text="LED control")
             self.light_label.pack()
 
             LIGHT_Var = StringVar(root)
@@ -189,11 +192,11 @@ class CamGUI:
         numloops = int(args.timeout * 5) # Number of loops until timeout
 
         for x in range(numloops):
-            GPIO.wait_for_edge(channelPush, GPIO.FALLING, timeout=195)
+            GPIO.wait_for_edge(args.trigger_pin, GPIO.FALLING, timeout=195)
             time.sleep(0.005) #debounce 5ms
 
 	        # double-check - workaround for messy edge detection
-            if GPIO.input(channelPush) == 0:
+            if GPIO.input(args.trigger_pin) == 0:
                 self.trigState = True
                 self.wait_trigger.deselect()
                 self.start_recording()
@@ -213,10 +216,10 @@ class CamGUI:
 
 # Set up trigger input GPIO
 GPIO.setmode(GPIO.BOARD)
-GPIO.setup(channelPush, GPIO.IN, pull_up_down=GPIO.PUD_UP) # internal pull up
+GPIO.setup(args.trigger_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP) # internal pull up
 
 # Check whether BrightPi is used
-if args.light:
+if !(args.light_off):
     brightPi = BrightPi()
     brightPi.reset()
 
@@ -233,6 +236,7 @@ camera.rotation = args.rotation
 camera.color_effects = (128,128) #b/w
 camera.framerate = args.framerate
 camera.preview_fullscreen = args.fullscreen
+camera.sensor_mode = args.sensor_mode
 
 #calculate preview size
 height = int(args.prevsize * 0.75)

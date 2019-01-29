@@ -5,7 +5,7 @@ mkdir -p /home/pi/Code
 cd /home/pi/Code
 
 # Clone into pupillometry repository
-git clone https://github.com/ein-lab/camera-gui.git
+git clone https://github.com/EIN-lab/camera-gui.git
 
 # Enable camera
 sudo raspi-config nonint do_camera 0
