@@ -97,7 +97,7 @@ class CamGUI:
         self.zoom_label.pack()
 
         ZOOM_Var = StringVar(root)
-        ZOOM_Var.set(effects[0])
+        ZOOM_Var.set(zooms[0])
         ZOOM_Option = OptionMenu(master, ZOOM_Var, *zooms,
             command=self.set_zoom)
         ZOOM_Option.pack()
