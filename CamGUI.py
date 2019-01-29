@@ -16,7 +16,7 @@ parser.add_argument('--fullscreen', action='store_true', default=False,
 parser.add_argument("--trigger_pin",  type=int, default=40,
     help="Raspberry's trigger input pin as specified with 'GPIO.board'.",)
 parser.add_argument("--light_off", action='store_true', default=False,
-    dest='light', help="Disable BrightPi.")
+    dest='light_off', help="Disable BrightPi.")
 parser.add_argument("--prevsize",  type=float, default=320,
     help="Width of the preview window.",)
 parser.add_argument("-r", "--framerate",  type=int, default=30,
