@@ -61,6 +61,8 @@ Valid parameters are:
 ## External triggering
 CamGUI.py can accept external triggers on pin 40 (GPIO 21) when the appropriate box is ticked. CamGUI.py will then wait for the time specified with `--timeout` (default = 20 seconds) for the pin to be pulled low. For example with a push button between GND and GPIO21.
 
+External triggering is also an easy way to synchronize recordings from two pupillometry setups, for example for simultaneous recording of both eyes. 
+
 ## Start CamGUI.py via an executable
 CamGUI.py can also be started from an executable placed on the desktop, for example. Follow below steps to open an editor.
 

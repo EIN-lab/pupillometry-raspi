@@ -89,7 +89,7 @@ class CamGUI:
         self.start_rec.pack()
 
         self.stop_rec = Button(master, text="Stop Recording",
-            command=camera.stop_recording)
+            command=self.stop_recording)
         self.stop_rec.pack()
 
         # Zoom control
@@ -113,6 +113,7 @@ class CamGUI:
                 command=self.set_light)
             self.light_Option.pack()
 
+            # Disable light control, if BrightPi wasn't detected
             if disable_light:
                 self.light_Option.configure(state="disabled")
 
@@ -203,8 +204,14 @@ class CamGUI:
                 sys.stdout.flush()
                 camera.wait_recording(1)
 
-            camera.stop_recording()
-            sys.stdout.write("\rDone recording!               \n")
+            self.stop_recording()
+
+    def stop_recording(self):
+        """Stop current recording"""
+
+        camera.stop_recording()
+        sys.stdout.write("\rDone recording!               \n")
+        sys.stdout.write("File saved to {:s}\n".format(fname))
 
     def point_save_location(self):
         """ Ask user where to save the file"""
