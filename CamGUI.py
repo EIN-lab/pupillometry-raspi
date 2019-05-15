@@ -204,9 +204,9 @@ class CamGUI:
                 sys.stdout.flush()
                 camera.wait_recording(1)
 
-            self.stop_recording()
+            self.stop_recording(fname)
 
-    def stop_recording(self):
+    def stop_recording(self, fname):
         """Stop current recording"""
 
         camera.stop_recording()
