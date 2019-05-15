@@ -182,7 +182,7 @@ class CamGUI:
             date = datetime.datetime.now().strftime("%d_%m_%Y_%H_%M_%S")
             fname = "./"+ date
 
-        if fname[-4:] != ".h264":
+        if fname[-5:] != ".h264":
             fname = fname+ ".h264"
 
         # Update displayed file name
@@ -222,6 +222,7 @@ class CamGUI:
 
         if fname is None:
             return
+
         self.file_name_value.delete(0,END)
         self.file_name_value.insert(0,fname)
 
@@ -244,7 +245,6 @@ class CamGUI:
 	        # double-check - workaround for messy edge detection
             if GPIO.input(args.trigger_pin) == 0:
                 self.trigState = True
-                self.wait_trigger.deselect()
                 self.start_recording()
                 return
 	    else:
@@ -254,7 +254,6 @@ class CamGUI:
             sys.stdout.flush()                # flush stdout buffer (actual character display)
             sys.stdout.write('\b')            # erase the last written char
 
-        self.wait_trigger.deselect()
         sys.stdout.write('\bNo trigger arrived\n')
         sys.stdout.flush()
         return
