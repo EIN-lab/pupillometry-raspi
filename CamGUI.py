@@ -206,12 +206,12 @@ class CamGUI:
 
             self.stop_recording(fname)
 
-    def stop_recording(self, fname):
+    def stop_recording(self):
         """Stop current recording"""
 
         camera.stop_recording()
         sys.stdout.write("\rDone recording!               \n")
-        sys.stdout.write("File saved to {:s}\n".format(fname))
+        sys.stdout.write("File saved to {:s}\n".format(self.file_name_value.get()))
 
     def point_save_location(self):
         """ Ask user where to save the file"""
