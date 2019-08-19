@@ -50,16 +50,18 @@ python /home/pi/Code/camera-gui/CamGUI.py --light_off --framerate 5
 Valid parameters are:
 
 + `--fullscreen` shows preview in full screen mode. This parameter needs no value. (Default = False)
-+ `--trigger_pin` specifies the input trigger pin number. (Default = 40)
++ `--trigger_pin PIN` specifies the input trigger pin number. (Default = 40)
 + `--light_off` disables light source. Used when no BrightPi is attached. This parameter needs no value. (Default = False)
 + `--prevsize S` scales preview to custom width S. (Default = 320)
 + `-r R` or `--framerate R` sets a custom frame rate R. (Default = 30)
 + `--rotation ROT` sets the image rotation ROT in degrees. (Default = 180)
 + `--timeout T` sets the timeout T when waiting for a trigger, in seconds. (Default = 20)
-+ `--sensor_mode N` sets the sensor mode N. Can be one out of [1-7]. Refer to the PiCamera [docs](https://picamera.readthedocs.io/en/release-1.12/fov.html#camera-modes) for an overview of different modes. (Default = 1)
++ `--sensor_mode N` sets the sensor mode. N can be one out of [1-7]. Refer to the PiCamera [docs](https://picamera.readthedocs.io/en/release-1.12/fov.html#camera-modes) for an overview of different modes. (Default = 1)
 
 ## External triggering
 CamGUI.py can accept external triggers on pin 40 (GPIO 21) when the appropriate box is ticked. CamGUI.py will then wait for the time specified with `--timeout` (default = 20 seconds) for the pin to be pulled low. For example with a push button between GND and GPIO21.
+
+External triggering is also an easy way to synchronize recordings from two pupillometry setups, for example for simultaneous recording of both eyes.
 
 ## Start CamGUI.py via an executable
 CamGUI.py can also be started from an executable placed on the desktop, for example. Follow below steps to open an editor.

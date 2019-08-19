@@ -89,7 +89,7 @@ class CamGUI:
         self.start_rec.pack()
 
         self.stop_rec = Button(master, text="Stop Recording",
-            command=camera.stop_recording)
+            command=self.stop_recording)
         self.stop_rec.pack()
 
         # Zoom control
@@ -113,6 +113,7 @@ class CamGUI:
                 command=self.set_light)
             self.light_Option.pack()
 
+            # Disable light control, if BrightPi wasn't detected
             if disable_light:
                 self.light_Option.configure(state="disabled")
 
@@ -181,7 +182,7 @@ class CamGUI:
             date = datetime.datetime.now().strftime("%d_%m_%Y_%H_%M_%S")
             fname = "./"+ date
 
-        if fname[-4:] != ".h264":
+        if fname[-5:] != ".h264":
             fname = fname+ ".h264"
 
         # Update displayed file name
@@ -203,8 +204,14 @@ class CamGUI:
                 sys.stdout.flush()
                 camera.wait_recording(1)
 
-            camera.stop_recording()
-            sys.stdout.write("\rDone recording!               \n")
+            self.stop_recording(fname)
+
+    def stop_recording(self):
+        """Stop current recording"""
+
+        camera.stop_recording()
+        sys.stdout.write("\rDone recording!               \n")
+        sys.stdout.write("File saved to {:s}\n".format(self.file_name_value.get()))
 
     def point_save_location(self):
         """ Ask user where to save the file"""
@@ -215,6 +222,7 @@ class CamGUI:
 
         if fname is None:
             return
+
         self.file_name_value.delete(0,END)
         self.file_name_value.insert(0,fname)
 
@@ -237,7 +245,6 @@ class CamGUI:
 	        # double-check - workaround for messy edge detection
             if GPIO.input(args.trigger_pin) == 0:
                 self.trigState = True
-                self.wait_trigger.deselect()
                 self.start_recording()
                 return
 	    else:
@@ -247,7 +254,6 @@ class CamGUI:
             sys.stdout.flush()                # flush stdout buffer (actual character display)
             sys.stdout.write('\b')            # erase the last written char
 
-        self.wait_trigger.deselect()
         sys.stdout.write('\bNo trigger arrived\n')
         sys.stdout.flush()
         return
