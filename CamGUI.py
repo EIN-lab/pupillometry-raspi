@@ -7,6 +7,8 @@ from brightpi import *
 import datetime, time, itertools
 import RPi.GPIO as GPIO
 
+from tqdm import tqdm, trange
+
 # Parser for optional arguments
 import argparse
 
@@ -199,10 +201,7 @@ class CamGUI:
 
         # Do timed recording, if necessary
         if (time_rec > 0):
-            for remaining in range(time_rec, 0, -1):
-                sys.stdout.write("\r")
-                sys.stdout.write("{:2d} seconds remaining.".format(remaining))
-                sys.stdout.flush()
+            for remaining in trange(time_rec, 0, -1):
                 camera.wait_recording(1)
 
             self.stop_recording()
@@ -211,7 +210,6 @@ class CamGUI:
         """Stop current recording"""
 
         camera.stop_recording()
-        sys.stdout.write("\rDone recording!               \n")
         sys.stdout.write("File saved to {:s}\n".format(self.file_name_value.get()))
 
     def point_save_location(self):
