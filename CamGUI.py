@@ -112,6 +112,7 @@ class CamGUI:
             self.light_Option = OptionMenu(master, LIGHT_Var, *effects,
                 command=self.set_light)
             self.light_Option.pack()
+	    disable_light = False
 
             # Disable light control, if BrightPi wasn't detected
             if disable_light:
@@ -204,7 +205,7 @@ class CamGUI:
                 sys.stdout.flush()
                 camera.wait_recording(1)
 
-            self.stop_recording(fname)
+            self.stop_recording()
 
     def stop_recording(self):
         """Stop current recording"""
