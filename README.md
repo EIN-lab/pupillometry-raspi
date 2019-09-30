@@ -5,9 +5,9 @@
 
 ## Resources
 - [Assembly Guide](/ASSEMBLY.md)
-- [Installation](INSTALLATION.md)
 - Software
-  [Camera GUI](CAMGUI.md)
-  [Video conversion and editing with ffmpeg](FFMPEG.md)
-  [Video analysis with DeepLabCut](DEEPLABCUT.md)
-  [Video analysis with MATLAB](MATLAB.md)
+  - [Camera GUI](CAMGUI.md)
+  - [Video conversion and editing with ffmpeg](FFMPEG.md)
+  - [Video analysis with DeepLabCut](DEEPLABCUT.md)
+  - [Video analysis with MATLAB](MATLAB.md)
+  - [Online Visualization and Statistics](APP.md)
