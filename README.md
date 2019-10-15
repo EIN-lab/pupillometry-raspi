@@ -5,7 +5,7 @@
 
 ## Resources
 - [Assembly Guide](/ASSEMBLY.md)
-- Software
+- Usage
   - [Camera GUI](CAMGUI.md)
   - [Video conversion and editing with ffmpeg](FFMPEG.md)
   - [Video analysis with DeepLabCut](DEEPLABCUT.md)

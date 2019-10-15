@@ -8,7 +8,7 @@ The following components are needed before starting the assembly process. Please
 * [Raspberry Pi Touchscreen (optional, but recommended)](https://ch.rs-online.com/web/p/entwicklungskits-grafikdisplay/8997466/)
 * [Pi + Touchscreen housing (optional, but recommended)](https://ch.rs-online.com/web/p/raspberry-pi-gehause/9064665/)
 * [Raspberry Pi NoIR Camera V2](https://ch.rs-online.com/web/p/videomodule/9132673/)
-* [Pi Supply Bright Pi (or other IR light source)](https://www.pi-shop.ch/pi-supply-bright-pi-bright-white-und-ir-kamera-licht-fuer-raspberry-pi)
+* [Pi Supply Bright Pi (or other IR light source)](https://uk.pi-supply.com/products/bright-pi-bright-white-ir-camera-light-raspberry-pi)
 * [CSI Flex Cable ca. 1m](https://www.pi-shop.ch/raspberry-pi-camera-cable-50cm-100cm-200m)
 * [2x Power Supply](https://ch.rs-online.com/web/p/ac-dc-adapter/1770223/)
 * [SD Card (>= 16GB)](https://ch.rs-online.com/web/p/sd-karten/1249638/)

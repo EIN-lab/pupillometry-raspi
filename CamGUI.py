@@ -3,9 +3,10 @@ from Tkinter import *
 from tkFileDialog import asksaveasfilename
 
 from picamera import PiCamera
-from brightpi import *
-import datetime, time, itertools
 import RPi.GPIO as GPIO
+from brightpi import *
+
+import os, datetime, time, itertools
 
 from tqdm import tqdm, trange
 import simplejson as json
@@ -115,11 +116,14 @@ class CamGUI:
             self.light_Option = OptionMenu(master, LIGHT_Var, *effects,
                 command=self.set_light)
             self.light_Option.pack()
-	    disable_light = False
+            disable_light = False
 
-            # Disable light control, if BrightPi wasn't detected
-            if disable_light:
-                self.light_Option.configure(state="disabled")
+        # Disable light control, if BrightPi wasn't detected
+        if disable_light:
+            self.light_Option.configure(state="disabled")
+
+        # Initialise acquisition counter
+        self.acq_num = 1;
 
     def on_enter(self, event):
         """Tooltip for record time label"""
@@ -132,44 +136,44 @@ class CamGUI:
         self.tooltip.configure(text="")
 
     def save_camera_params(self):
-	"""Save camera parameters to file"""
+    	"""Save camera parameters to file"""
 
-	params = {
+    	params = {
             "analog_gain" : float(camera.analog_gain),
             "awb_gains" : [float(x) for x in camera.awb_gains],
             "awb_mode" : camera.awb_mode,
             "brightness" : camera.brightness,
-	    "contrast" : float(camera.contrast),
+            "contrast" : float(camera.contrast),
             "crop" : camera.crop,
             "digital_gain" : float(camera.digital_gain),
             "drc_strength" : camera.drc_strength,
             "exposure" : {
-		"compensation" : camera.exposure_compensation,
-            	"mode" : camera.exposure_mode,
-            	"speed" : camera.exposure_speed
-	    },
+                "compensation" : camera.exposure_compensation,
+                "mode" : camera.exposure_mode,
+                "speed" : camera.exposure_speed
+            },
             "flash_mode" : camera.flash_mode,
             "framerate" : float(camera.framerate),
             "hflip" : camera.hflip,
             "image_denoise" : camera.image_denoise,
-	    "image_effect" : camera.image_effect,
-	    "image_effect_params" : camera.image_effect_params,
-       	    "iso" : camera.iso,
-	    "meter_mode" : camera.meter_mode,
-	    "resolution" : {
-		"width" : camera.resolution.width,
-		"height" : camera.resolution.height
-	    },
-	    "rotation" : camera.rotation,
-	    "sensor_mode" : camera.sensor_mode,
-	    "sharpness" : camera.sharpness
-	}
+            "image_effect" : camera.image_effect,
+            "image_effect_params" : camera.image_effect_params,
+            "iso" : camera.iso,
+            "meter_mode" : camera.meter_mode,
+            "resolution" : {
+                "width" : camera.resolution.width,
+                "height" : camera.resolution.height
+            },
+            "rotation" : camera.rotation,
+            "sensor_mode" : camera.sensor_mode,
+            "sharpness" : camera.sharpness
+    	}
 
-	fname = self.file_name_value.get()
-	fname = fname.replace('.h264', '.json')
+    	fname = self.file_name_value.get()
+    	fname = fname.replace('.h264', '.json')
 
-	with open(fname, 'w') as outfile:
-	    json.dump(params, outfile)
+    	with open(fname, 'w') as outfile:
+    	    json.dump(params, outfile)
 
     def set_light(self, value):
         """BrightPi control"""
@@ -210,7 +214,7 @@ class CamGUI:
     def start_recording(self):
         """Start recording or wait for trigger"""
 
-	    # check trigger state
+	    # Check trigger state
         self.trigState = False
         doWait = self.wait_trigger_flag.get()
         if doWait:
@@ -233,12 +237,26 @@ class CamGUI:
         self.file_name_value.delete(0,END)
         self.file_name_value.insert(0, fname)
 
+        # Add counter to filename (without updating dispalay)
+        filename, file_extension = os.path.splitext(fname)
+        filename = filename + str(self.acq_num).zfill(3)
+        fname = filename+file_extension
+
+        # Check file doesn't exist
+        if os.path.isfile(fname):
+            # Warn user and do nothing
+            sys.stdout.write("\nFile already exists!\n")
+            return
+
         # Get recording time
         time_rec = int(self.record_time_value.get())
 
         # Start recording and tell user
         camera.start_recording(fname)
         sys.stdout.write("\rRecording started\n")
+
+        # Increase counter
+        self.acq_num += 1
 
         # Do timed recording, if necessary
         if (time_rec > 0):
@@ -252,7 +270,7 @@ class CamGUI:
 
         camera.stop_recording()
         sys.stdout.write("File saved to {:s}\n".format(self.file_name_value.get()))
-	self.save_camera_params()
+        self.save_camera_params()
 
     def point_save_location(self):
         """ Ask user where to save the file"""
@@ -283,17 +301,17 @@ class CamGUI:
             GPIO.wait_for_edge(args.trigger_pin, GPIO.FALLING, timeout=195)
             time.sleep(0.005) #debounce 5ms
 
-	        # double-check - workaround for messy edge detection
-            if GPIO.input(args.trigger_pin) == 0:
-                self.trigState = True
-                self.start_recording()
-                return
-	    else:
-		time.sleep(0.195)
+        # double-check - workaround for messy edge detection
+        if GPIO.input(args.trigger_pin) == 0:
+            self.trigState = True
+            self.start_recording()
+            return
+        else:
+            time.sleep(0.195)
 
-            sys.stdout.write(spinner.next())  # write the next character
-            sys.stdout.flush()                # flush stdout buffer (actual character display)
-            sys.stdout.write('\b')            # erase the last written char
+        sys.stdout.write(spinner.next())  # write the next character
+        sys.stdout.flush()                # flush stdout buffer (actual character display)
+        sys.stdout.write('\b')            # erase the last written char
 
         sys.stdout.write('\bNo trigger arrived\n')
         sys.stdout.flush()
