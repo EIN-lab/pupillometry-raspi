@@ -1,4 +1,7 @@
-# A complete toolbox for in vivo manipulation and real-time measurement of locus coeruleus activity in mice
+# A complete pupillometry toolbox for real-time surveillance of locus coeruleus activity in rodents
+
+Mattia Privitera*, Kim David Ferrari*, Amalia Floriou-Servou, Oliver Sturman, Yannick Vermeiren, Peter de Deyn, Matthias Wyss, Bruno Weber, Johannes Bohacek
+*=equal contribution
 
 ## Introduction
 
