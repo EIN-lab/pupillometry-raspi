@@ -130,3 +130,5 @@ Make sure you have a working internet connection and run the installation script
 # Run this line and all necessary software will be installed
 curl -sSL https://git.io/fheWn | bash
 ```
+
+[Home](./index.html)

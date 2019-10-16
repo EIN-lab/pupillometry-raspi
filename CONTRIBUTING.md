@@ -212,3 +212,5 @@ This table lists the labels we use to help us track and manage issues and pull r
 ## Attribution
 
 These contributing guidelines are derived from [atom.io](https://atom.io)'s [CONTRIBUTING.md](https://github.com/atom/atom/blob/master/CONTRIBUTING.md), which is licensed under the [MIT License](https://github.com/atom/atom/blob/master/LICENSE.md).
+
+[Home](./index.html)

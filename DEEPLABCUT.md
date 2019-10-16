@@ -9,3 +9,5 @@ More information on DeepLabCut ont he [website](http://www.mousemotorlab.org/dee
 
 ## Basic instructions
 Follow the instructions in the [original protocol](https://www.nature.com/articles/s41596-019-0176-0) to install DeepLabCut and its dependencies. Then, use this [jupyter notebook]() to either train your own network or improve the pre-trained network with your own data for a more versatile model.
+
+[Home](./index.html)

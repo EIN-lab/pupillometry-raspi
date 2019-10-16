@@ -14,3 +14,5 @@ Mattia Privitera*, Kim David Ferrari*, Amalia Floriou-Servou, Oliver Sturman, Ya
   - [Video analysis with DeepLabCut](DEEPLABCUT.md)
   - [Video analysis with MATLAB](MATLAB.md)
   - [Online Visualization and Statistics](APP.md)
+
+[Home](./index.html)

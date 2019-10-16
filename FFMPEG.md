@@ -45,3 +45,4 @@ FFmpeg allows to edit video files in a number of ways during the conversion. For
 # y: vertical position of top edge
 ffmpeg -framerate 30 -i input.h264 -filter:v "crop=out_w:out_h:x:y" output.mp4
 ```
+[Home](./index.html)
