@@ -3,11 +3,41 @@
 // Put all of this in a jupyter notebook? //
 
 ## Introduction
-[DeepLabCut](http://www.mousemotorlab.org/deeplabcut) is a deep-learning software package designed for 3D markerless pose estimation from video files. Here, we use it to identify points on the edge of the pupil to estimate pupil diameter. We provide a pre-trained network that the user can further improve by training with their own data.
+Pupil tracking with [DeepLabCut](http://www.mousemotorlab.org/deeplabcut) (DLC) requires training of a network on a set of videos to recognize the pupil. Although we provide our own DeepLabCut network here (LINK), we strongly recommend training a new network tailored to each individual setup. New DeepLabCut networks can be based on our pre-trained network to facilitate the training process. A detailed description for training DeepLabCut networks has recently been provided by [Nath and colleagues (2019)](https://www.nature.com/articles/s41596-019-0176-0).
 
-More information on DeepLabCut ont he [website](http://www.mousemotorlab.org/deeplabcut), the [Nature Neuroscience paper](https://www.nature.com/articles/s41593-018-0209-y) and the [Nature Protocols paper](https://www.nature.com/articles/s41596-019-0176-0).
+
+More information on DeepLabCut on their [website](http://www.mousemotorlab.org/deeplabcut), the [Nature Neuroscience paper](https://www.nature.com/articles/s41593-018-0209-y) and the [Nature Protocols paper](https://www.nature.com/articles/s41596-019-0176-0).
 
 ## Basic instructions
-Follow the instructions in the [original protocol](https://www.nature.com/articles/s41596-019-0176-0) to install DeepLabCut and its dependencies. Then, use this [jupyter notebook]() to either train your own network or improve the pre-trained network with your own data for a more versatile model.
+Follow the instructions in the [original protocol](https://www.nature.com/articles/s41596-019-0176-0) to install DeepLabCut and its dependencies.
+
+Open Anaconda and start an IPython session within your DeepLabCut environment and import the package with the following command and press “Enter”:
+
+```python
+import deeplabcut
+```
+
+Set the config path according to your config file location and press “Enter”.
+
+```python
+config_path = ‘path_of_the_config_file’
+```
+
+To analyze videos use the following command and indicate the path to the video files obtained earlier. To start the analysis press “Enter”.
+
+```python
+deeplabcut.analyze_videos(config_path, [‘path_of_video_to_be_analyzed’], save_as_csv=True)
+```
+
+Labelled videos can be created after analysis for a visual assessment of performance using the command:
+
+```python
+deeplabcut.create_labeled_video(config_path, ['path_of_previously_analyzed_video'])
+```
+
+Continue with the ”.csv” files generated from the analysis previously. Make the folder containing these files the working directory of the R script `PupillometryR.R` change name of R Script if needed (see supplementary).
+
+After running the R script you will obtain the “.mat” files required for the [pupillometry app](./APP.md). See more details in the “pupillometry app user manual” or within pupillometry app directly.
+
 
 [Home](./index.html)
