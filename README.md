@@ -1,7 +1,8 @@
 # A complete pupillometry toolbox for real-time surveillance of locus coeruleus activity in rodents
 
-Mattia Privitera*, Kim David Ferrari*, Amalia Floriou-Servou, Oliver Sturman, Yannick Vermeiren, Peter de Deyn, Matthias Wyss, Bruno Weber, Johannes Bohacek
-*=equal contribution
+Mattia Privitera\*, Kim David Ferrari\*, Lukas von Ziegler, Oliver Sturman, Amalia Floriou-Servou, Pierre-Luc Germain, Yannick Vermeiren, Sian Duss, Matthias Wyss, Peter de Deyn, Bruno Weber\#, Johannes Bohacek\#
+
+\* = equal contribution; \# = co-corresponding authors
 
 ## Introduction
 
