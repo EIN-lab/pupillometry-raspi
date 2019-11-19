@@ -5,7 +5,7 @@ rm -R /home/pi/Code/Bright-Pi
 rm /usr/local/bin/brightpi*
 
 # Remove camera-gui
-rm -R /home/pi/Code/camera-gui
+rm -R /home/pi/Code/pupillometry-raspi
 
 # Reboot raspberry
-whiptail --msgbox "Bright-Pi and camera-gui successfully uninstalled" 8 40
+whiptail --msgbox "Bright-Pi and pupillometry-raspi successfully uninstalled" 8 40
