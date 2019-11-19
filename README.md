@@ -1,13 +1,21 @@
 # A complete pupillometry toolbox for real-time surveillance of locus coeruleus activity in rodents
 
-Mattia Privitera*, Kim David Ferrari*, Amalia Floriou-Servou, Oliver Sturman, Yannick Vermeiren, Peter de Deyn, Matthias Wyss, Bruno Weber, Johannes Bohacek
-*=equal contribution
+Mattia Privitera\*, Kim David Ferrari\*, Lukas von Ziegler, Oliver Sturman, Amalia Floriou-Servou, Pierre-Luc Germain, Yannick Vermeiren, Sian Duss, Matthias Wyss, Peter de Deyn, Bruno Weber\#, Johannes Bohacek\#
 
-## Introduction
+\* = equal contribution; \# = co-corresponding authors
+
+## Publication
+
+[Privitera, et al., (2019). A complete pupillometry toolbox for real-time surveillance of locus coeruleus activity in rodents](Link)
 
 
 ## Resources
-- [Assembly Guide](/ASSEMBLY.md)
+
+Please refer to [our website](https://ein-lab.github.io/pupillometry-raspi) for a complete assembly and usage guide.
+
+
+
+<!-- - [Assembly Guide](/ASSEMBLY.md)
 - Usage
   - [Camera GUI](CAMGUI.md)
   - [Video conversion and editing with ffmpeg](FFMPEG.md)
@@ -15,4 +23,4 @@ Mattia Privitera*, Kim David Ferrari*, Amalia Floriou-Servou, Oliver Sturman, Ya
   - [Video analysis with MATLAB](MATLAB.md)
   - [Online Visualization and Statistics](APP.md)
 
-[Home](./index.html)
+[Home](./index.html) -->
