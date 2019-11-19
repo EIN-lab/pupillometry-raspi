@@ -11,7 +11,7 @@ Mattia Privitera\*, Kim David Ferrari\*, Lukas von Ziegler, Oliver Sturman, Amal
 
 ## Resources
 
-Please refer to [our website](https://ein-lab.github.io/camera-gui) for a complete assembly and usage guide.
+Please refer to [our website](https://ein-lab.github.io/pupillometry-raspi) for a complete assembly and usage guide.
 
 
 
