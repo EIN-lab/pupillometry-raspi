@@ -1,3 +1,7 @@
+<p align="center">
+  <img width="250" src="assets/images/labeled_video.gif">
+</p>
+
 ## Analyse a single video
 
 Open MATLAB and in the file browser navigate to the <<REPOSITORYNAME>> folder on your hard disk.
@@ -28,7 +32,7 @@ Set up a MATLAB script containing the following text or simply open the script l
 
 ```Matlab
 % Add pupil-analysis to MATLAB path (replace with your specific path)
-addpath(genpath('D:\Code\Matlab\pupil-analysis'))
+addpath(genpath('D:\Code\Matlab\pupillometry-matlab'))
 
 % Define parameters
 fitMethod = 2;
@@ -43,6 +47,7 @@ enhanceContrast = true;
 doCrop = true;
 skipBadFrames = true;
 fillBadData = 'linear';
+saveLabeledFrames = false;
 
 % Run pupilMeasurement with pre-defined parameters
 pup02 = pupilMeasurement('fitMethod', fitMethod, 'doPlot', doPlot, ...
@@ -50,7 +55,7 @@ pup02 = pupilMeasurement('fitMethod', fitMethod, 'doPlot', doPlot, ...
     'videoPath', videoPath, 'fileSavePath', fileSavePath, ...
     'startFrame', startFrame, 'enhanceContrast', enhanceContrast, ...
     'doCrop', doCrop, 'skipBadFrames', skipBadFrames, ...
-    'fillBadData', fillBadData)
+    'fillBadData', fillBadData, 'saveLabeledFrames', saveLabeledFrames)
 ```
 
 Now click "Run" at the top of the MATLAB IDE to run the script and follow the interactive dialog as outlined above.
