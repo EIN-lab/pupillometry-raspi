@@ -17,7 +17,7 @@ sudo raspi-config nonint do_i2c 0
 sudo apt-get install python-smbus -y
 
 # Install python dependencies for CamGUI.py
-pip install tqdm simplejson
+python -m pip install tqdm simplejson
 
 # Clone into BrightPi repository and run install script
 git clone https://github.com/PiSupply/Bright-Pi.git
