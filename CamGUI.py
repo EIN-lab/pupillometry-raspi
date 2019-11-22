@@ -327,19 +327,6 @@ class CamGUI:
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(args.trigger_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP) # internal pull up
 
-# # Check whether BrightPi is used
-# if not args.light_off:
-#     brightPi = BrightPi()
-#     brightPi.reset()
-#
-#     # Define LEDs
-#     LED_ALL = (1,2,3,4,5,6,7,8)
-#     LED_WHITE = LED_ALL[0:4]
-#     LED_IR = LED_ALL[4:8]
-#     ON = 1
-#     OFF = 0
-
-# Try creating BrightPi object
 try:
     brightPi = BrightPi()
     brightPi.reset()
@@ -355,6 +342,7 @@ except:
 
     # Disable LED option menu
     disable_light = True
+    args.light_off = True
 
 # Create camera object with defined settings
 camera = PiCamera()
@@ -378,4 +366,8 @@ try:
     root.mainloop()
 except KeyboardInterrupt:
     GPIO.cleanup()
-    camera.close()
+    camera.close
+    try:
+        brightPi.reset()
+    except:
+        pass
