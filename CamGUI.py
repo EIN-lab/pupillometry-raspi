@@ -1,6 +1,11 @@
+#!/usr/bin/env python
 
-from Tkinter import *
-from tkFileDialog import asksaveasfilename
+try:
+    from Tkinter import *
+    from tkFileDialog import asksaveasfilename
+except:
+    from tkinter import *
+    from tkinter.filedialog import asksaveasfilename
 
 from picamera import PiCamera
 import RPi.GPIO as GPIO
