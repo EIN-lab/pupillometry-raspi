@@ -40,12 +40,11 @@ CamGUI.py can be started with optional parameters in the following format, witho
 # Start CamGUI.py with optional parameters
 python /home/pi/Code/pupillometry-raspi/CamGUI.py --[PARAMETER] [VALUE]
 
-# Example without BrightPi light source control.
-# Note that '--light_off' doesn't require a value
-python /home/pi/Code/pupillometry-raspi/CamGUI.py --light_off
+# Example with a larger video preview window
+python /home/pi/Code/pupillometry-raspi/CamGUI.py --prevsize 700
 
-# Example without BrightPi light source control and low frame rate
-python /home/pi/Code/pupillometry-raspi/CamGUI.py --light_off --framerate 5
+# Example with large preview and low frame rate
+python /home/pi/Code/pupillometry-raspi/CamGUI.py --prevsize 700 --framerate 5
 ```
 
 Valid parameters are:
@@ -85,7 +84,7 @@ python /home/pi/Code/pupillometry-raspi/CamGUI.py
 Type `CTRL + o` to save and `CTRL + x` to exit. Now, run the below command to make the file executable.
 
 ```bash
-sudo chmod +x start_camera.sh
+sudo chmod +x /home/pi/Desktop/start_camera.sh
 ```
 
 [Home](./index.html)
