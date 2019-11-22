@@ -2,7 +2,7 @@
 # Usage of the camera guided user interface (GUI)
 
 ## Introduction
-This is a guide to the graphical user interface (GUI) installed to '/home/pi/Code/camera-gui/'. The GUI lets you control the camera without having to issue any commands via command line. The following steps will show you how to use CamGUI.py with its various optional parameters.
+This is a guide to the graphical user interface (GUI) installed to '/home/pi/Code/pupillometry-raspi/'. The GUI lets you control the camera without having to issue any commands via command line. The following steps will show you how to use CamGUI.py with its various optional parameters.
 
 ## Basic instructions
 In order for the camera GUI to start, both the camera and the BrightPi need to be connected to the raspberry (see the [assembly guide](./ASSEMBLY.md) for more information on how to get set up).
@@ -10,7 +10,7 @@ When everything is connected properly, the GUI is started by typing the followin
 
 ```bash
 # Start CamGUI.py from its folder
-python /home/pi/Code/camera-gui/CamGUI.py
+python /home/pi/Code/pupillometry-raspi/CamGUI.py
 ```
 
 ### GUI controls
@@ -38,14 +38,14 @@ CamGUI.py can be started with optional parameters in the following format, witho
 
 ```bash
 # Start CamGUI.py with optional parameters
-python /home/pi/Code/camera-gui/CamGUI.py --[PARAMETER] [VALUE]
+python /home/pi/Code/pupillometry-raspi/CamGUI.py --[PARAMETER] [VALUE]
 
 # Example without BrightPi light source control.
 # Note that '--light_off' doesn't require a value
-python /home/pi/Code/camera-gui/CamGUI.py --light_off
+python /home/pi/Code/pupillometry-raspi/CamGUI.py --light_off
 
 # Example without BrightPi light source control and low frame rate
-python /home/pi/Code/camera-gui/CamGUI.py --light_off --framerate 5
+python /home/pi/Code/pupillometry-raspi/CamGUI.py --light_off --framerate 5
 ```
 
 Valid parameters are:
@@ -62,7 +62,9 @@ Valid parameters are:
 ## External triggering
 CamGUI.py can accept external triggers on pin 40 (GPIO 21) when the appropriate box is ticked. CamGUI.py will then wait for the time specified with `--timeout` (default = 20 seconds) for the pin to be pulled low. For example with a push button between GND and GPIO21.
 
-[Add Fritzing scheme]
+<p align="center">
+  <img width="350" src="assets/images/raspi_trigger_fritzing.png">
+</p>
 
 External triggering is also an easy way to synchronize recordings from two pupillometry setups, for example for simultaneous recording of both eyes.
 
@@ -77,7 +79,7 @@ Then enter the following lines. Add optional parameters as needed.
 
 ```bash
 #!/bin/sh
-python /home/pi/Code/camera-gui/CamGUI.py
+python /home/pi/Code/pupillometry-raspi/CamGUI.py
 ```
 
 Type `CTRL + o` to save and `CTRL + x` to exit. Now, run the below command to make the file executable.
@@ -85,15 +87,5 @@ Type `CTRL + o` to save and `CTRL + x` to exit. Now, run the below command to ma
 ```bash
 sudo chmod +x start_camera.sh
 ```
-
-## Optional Add-Ons
-
-Some intro why it might be helpful to add more. Highlight scalability of the system.
-
-#### Push Button Trigger
-
-#### Connect Multiple Systems
-
-#### Network Storage
 
 [Home](./index.html)
