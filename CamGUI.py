@@ -1,6 +1,11 @@
+#!/usr/bin/env python
 
-from Tkinter import *
-from tkFileDialog import asksaveasfilename
+try:
+    from Tkinter import *
+    from tkFileDialog import asksaveasfilename
+except:
+    from tkinter import *
+    from tkinter.filedialog import asksaveasfilename
 
 from picamera import PiCamera
 import RPi.GPIO as GPIO
@@ -116,11 +121,6 @@ class CamGUI:
             self.light_Option = OptionMenu(master, LIGHT_Var, *effects,
                 command=self.set_light)
             self.light_Option.pack()
-            disable_light = False
-
-        # Disable light control, if BrightPi wasn't detected
-        if disable_light:
-            self.light_Option.configure(state="disabled")
 
         # Initialise acquisition counter
         self.acq_num = 1;
@@ -322,19 +322,6 @@ class CamGUI:
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(args.trigger_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP) # internal pull up
 
-# # Check whether BrightPi is used
-# if not args.light_off:
-#     brightPi = BrightPi()
-#     brightPi.reset()
-#
-#     # Define LEDs
-#     LED_ALL = (1,2,3,4,5,6,7,8)
-#     LED_WHITE = LED_ALL[0:4]
-#     LED_IR = LED_ALL[4:8]
-#     ON = 1
-#     OFF = 0
-
-# Try creating BrightPi object
 try:
     brightPi = BrightPi()
     brightPi.reset()
@@ -349,7 +336,7 @@ except:
     sys.stdout.write("\nNo BrightPi detected. Disabling LED control.\n")
 
     # Disable LED option menu
-    disable_light = True
+    args.light_off = True
 
 # Create camera object with defined settings
 camera = PiCamera()
@@ -373,4 +360,8 @@ try:
     root.mainloop()
 except KeyboardInterrupt:
     GPIO.cleanup()
-    camera.close()
+    camera.close
+    try:
+        brightPi.reset()
+    except:
+        pass

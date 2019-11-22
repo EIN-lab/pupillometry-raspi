@@ -12,15 +12,3 @@ Mattia Privitera\*, Kim David Ferrari\*, Lukas von Ziegler, Oliver Sturman, Amal
 ## Resources
 
 Please refer to [our website](https://ein-lab.github.io/pupillometry-raspi) for a complete assembly and usage guide.
-
-
-
-<!-- - [Assembly Guide](/ASSEMBLY.md)
-- Usage
-  - [Camera GUI](CAMGUI.md)
-  - [Video conversion and editing with ffmpeg](FFMPEG.md)
-  - [Video analysis with DeepLabCut](DEEPLABCUT.md)
-  - [Video analysis with MATLAB](MATLAB.md)
-  - [Online Visualization and Statistics](APP.md)
-
-[Home](./index.html) -->
