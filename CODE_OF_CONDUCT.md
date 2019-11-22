@@ -1,4 +1,4 @@
-# camera-gui Code of Conduct
+# pupillometry-raspi Code of Conduct
 
 ## Our Pledge
 
