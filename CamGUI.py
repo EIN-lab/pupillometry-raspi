@@ -122,10 +122,6 @@ class CamGUI:
                 command=self.set_light)
             self.light_Option.pack()
 
-        # Disable light control, if BrightPi wasn't detected
-        if args.light_off:
-            self.light_Option.configure(state="disabled")
-
         # Initialise acquisition counter
         self.acq_num = 1;
 
