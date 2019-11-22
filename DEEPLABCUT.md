@@ -22,13 +22,13 @@ import deeplabcut
 Set the config path according to your config file location and press “Enter”.
 
 ```python
-config_path = ‘path_of_the_config_file’
+config_path = 'path_of_the_config_file'
 ```
 
 To analyze videos use the following command and indicate the path to the video files obtained earlier. To start the analysis press “Enter”.
 
 ```python
-deeplabcut.analyze_videos(config_path, [‘path_of_video_to_be_analyzed’], save_as_csv=True)
+deeplabcut.analyze_videos(config_path, ['path_of_video_to_be_analyzed'], save_as_csv=True)
 ```
 
 Once all videos have been analyzed, labelled videos can be created for a visual assessment of performance using the following command and press “Enter”. This will generate the labelled videos and save them into the folder of the original MP4 videos.
@@ -40,7 +40,7 @@ deeplabcut.create_labeled_video(config_path, ['path_of_previously_analyzed_video
 
 Continue with the ”.csv” files generated from the analysis previously. Make the folder containing these files the working directory of the R script `PupillometryR.R` change name of R Script if needed (see supplementary).
 
-After running the R script you will obtain the “.mat” files required for the [pupillometry app](./APP.md). See more details in the “pupillometry app user manual” or within pupillometry app directly.
+After running the R script you will obtain the “.mat” files required for the [Pupillometry App](./APP.md). See more details in the “Pupillometry App user manual” or within pupillometry app directly.
 
 
 [Home](./index.html)

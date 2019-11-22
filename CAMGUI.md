@@ -14,24 +14,18 @@ python /home/pi/Code/pupillometry-raspi/CamGUI.py
 ```
 
 ### GUI controls
-![image_of_GUI]
-
-1. Opens camera preview
-2. Closes camera preview
-3. Specifies time in seconds for a recording to last
-4. Specifies path and filename to store file
-5. Opens a file dialogue box to browse
-6. Enables external triggering
-7. Starts recording
-8. Stops recording
-9. Sets the (digital) zoom value
-10. Controls BrightPi light source
+<p align="center">
+  <img width="350" src="assets/images/GUI.png">
+</p>
 
 ### Simple recording
-For a simple recording, start CamGUI.py and press "Start preview". Now adjust camera position and focus. If you want to see video on the screen during your recording, simply leave the preview on and press "Start recording". The camera will now record to the directory shown in terminal until "Stop recording" is pressed. The default filename is constructed from the date and time of the recording.
+Because of the way Raspbian overlays the live video feed with the screen, it can happen that the GUI window is covered by the video feed. In that case, press `CTRL + c` to terminate the GUI.
+
+
+For a simple recording, start CamGUI.py with the above command and press "Start Preview". Now adjust camera position and focus. If you want to see video on the screen during your recording, simply leave the preview on and press "Start Recording". The camera will now record to the directory shown in terminal until "Stop Recording" is pressed. The default filename is constructed from the date and time of the recording. You can also specify a custom location and name to store the video in the "File name" dialog box or via the "Browse..." button.
 
 ### Timed recording
-If you want the recording to run for a specified amount of time, enter the time in seconds into the dialogue box. A timer showing the remaining time will be displayed in the terminal window from which CamGUI.py was started.
+If you want the recording to run for a specified amount of time, enter the time in seconds into the dialogue box. Open the preview and press "Start Recording". A timer showing the remaining time will be displayed in the terminal window from which CamGUI.py was started. The recording will stop automatically after the specified amount of time.
 
 ## Optional parameters
 CamGUI.py can be started with optional parameters in the following format, without the brackets.
@@ -59,18 +53,19 @@ Valid parameters are:
 + `--sensor_mode N` sets the sensor mode. N can be one out of [1-7]. Refer to the PiCamera [docs](https://picamera.readthedocs.io/en/release-1.12/fov.html#camera-modes) for an overview of different modes. (Default = 1)
 
 ## External triggering
-CamGUI.py can accept external triggers on pin 40 (GPIO 21) when the appropriate box is ticked. CamGUI.py will then wait for the time specified with `--timeout` (default = 20 seconds) for the pin to be pulled low. For example with a push button between GND and GPIO21.
+CamGUI.py can accept external triggers on pin 40 (GPIO 21), or any other GPIO specified with `--trigger_pin`. When the appropriate box is ticked and once "Start Recording" is pressed, CamGUI.py will wait for the time specified with `--timeout` (default = 20 seconds) for the trigger to arrive, i.e. the pin to be pulled low. See below for an example with a push button between GND and GPIO21.
 
 <p align="center">
   <img width="350" src="assets/images/raspi_trigger_fritzing.png">
 </p>
 
-External triggering is also an easy way to synchronize recordings from two pupillometry setups, for example for simultaneous recording of both eyes.
+External triggering is also an easy way to synchronize recordings from two or more pupillometry setups. For example when simultaneously recording both eyes, or monitoring the breathing rate.
 
 ## Start CamGUI.py via an executable
-CamGUI.py can also be started from an executable placed on the desktop, for example. Follow below steps to open an editor.
+CamGUI.py can also be started from an executable file placed on the desktop, for example. Follow below steps to create such a file.
 
 ```bash
+# Open an editor via terminal
 sudo nano /home/pi/Desktop/start_camera.sh
 ```
 
