@@ -121,10 +121,9 @@ class CamGUI:
             self.light_Option = OptionMenu(master, LIGHT_Var, *effects,
                 command=self.set_light)
             self.light_Option.pack()
-            disable_light = False
 
         # Disable light control, if BrightPi wasn't detected
-        if disable_light:
+        if args.light_off:
             self.light_Option.configure(state="disabled")
 
         # Initialise acquisition counter
@@ -341,7 +340,6 @@ except:
     sys.stdout.write("\nNo BrightPi detected. Disabling LED control.\n")
 
     # Disable LED option menu
-    disable_light = True
     args.light_off = True
 
 # Create camera object with defined settings
