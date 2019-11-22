@@ -1,6 +1,8 @@
-# Video Analysis with DeepLabCut
+<p align="center">
+  <img width="250" src="assets/images/DLC_labeled.gif">
+</p>
 
-// Put all of this in a jupyter notebook? //
+# Video Analysis with DeepLabCut
 
 ## Introduction
 Pupil tracking with [DeepLabCut](http://www.mousemotorlab.org/deeplabcut) (DLC) requires training of a network on a set of videos to recognize the pupil. Although we provide our own DeepLabCut network here (LINK), we strongly recommend training a new network tailored to each individual setup. New DeepLabCut networks can be based on our pre-trained network to facilitate the training process. A detailed description for training DeepLabCut networks has recently been provided by [Nath and colleagues (2019)](https://www.nature.com/articles/s41596-019-0176-0).
@@ -29,7 +31,8 @@ To analyze videos use the following command and indicate the path to the video f
 deeplabcut.analyze_videos(config_path, [‘path_of_video_to_be_analyzed’], save_as_csv=True)
 ```
 
-Labelled videos can be created after analysis for a visual assessment of performance using the command:
+Once all videos have been analyzed, labelled videos can be created for a visual assessment of performance using the following command and press “Enter”. This will generate the labelled videos and save them into the folder of the original MP4 videos.
+
 
 ```python
 deeplabcut.create_labeled_video(config_path, ['path_of_previously_analyzed_video'])
