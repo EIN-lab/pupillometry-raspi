@@ -30,6 +30,8 @@ Wait for the progress bar to reach 100%. Results will now be saved in the result
 
 Set up a MATLAB script containing the following text or simply open the script located in the example folder.
 
+> CAUTION: Circular fit (fitMethod = 1) performs quite badly. We advise to use circular and elliptical fit (fitMethod = 2).
+
 ```Matlab
 % Add pupil-analysis to MATLAB path (replace with your specific path)
 addpath(genpath('D:\Code\Matlab\pupillometry-matlab'))
