@@ -128,7 +128,7 @@ Make sure you have a working internet connection and run the installation script
 
 ```bash
 # Run this line and all necessary software will be installed
-curl -sSL https://git.io/fheWn | bash
+curl -sSL https://git.io/JeKP0 | bash
 ```
 
 [Home](./index.html)
